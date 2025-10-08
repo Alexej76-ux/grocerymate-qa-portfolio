@@ -5,3 +5,4 @@ for the GroceryMate web application, including its current core functions and th
 newly requested features.
 ## Exisiting features
 - bottons
+- 
