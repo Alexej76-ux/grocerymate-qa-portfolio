@@ -1,0 +1,147 @@
+# Testplan – Webshop: Benutzer- und Shop-Funktionen
+
+## 1. Analyse des Produkts
+
+Das zu testende Produkt ist eine Webapplikation mit grundlegenden Benutzer- und Shop-Funktionen.
+Der User kann sich registrieren, anmelden, abmelden, Produkte durchsuchen und Social-Media-Kontakte nutzen.
+Zielgruppe sind Endnutzer ab 18 Jahren, die über verschiedene Plattformen auf den Online-Shop zugreifen.
+
+**Hauptfunktionen:**
+- Benutzerregistrierung (inkl. Altersprüfung)
+- Authentifizierung (Login/Logout)
+- Navigation (Home, Shop, Favoriten)
+- Social-Media-Anmeldung (Facebook, Instagram, Twitter, TikTok)
+- Produktdarstellung (Seiten 1–24)
+- Kaufprozess (inkl. Kreditkartenzahlung)
+- Favoritenfunktion
+
+---
+
+## 2. Entwurf der Teststrategie
+
+**Testebene:** Funktionaler Systemtest
+**Testarten:**
+- Manuelle Tests (Hauptfunktionen, UI-Verhalten)
+- Automatisierte Regressionstests (nach Bugfixes)
+
+**Testmethoden:**
+- Blackbox-Testing (Eingaben/Ausgaben)
+- Szenario- und Use-Case-basierte Tests
+
+**Defect-Management:**
+Defekte werden im Tool (z. B. Jira oder Azure DevOps) erfasst und priorisiert nach:
+- **Kritisch:** Verhindert zentrale Geschäftsprozesse (z. B. Zahlung)
+- **Hoch:** Betroffen sind Kernfunktionen (z. B. Favoriten)
+- **Mittel:** Geringe Einschränkung
+- **Niedrig:** UI- oder Textfehler
+
+---
+
+## 3. Definition der Testziele
+
+Ziel der Tests ist die Validierung, dass alle Hauptfunktionen wie spezifiziert arbeiten:
+
+1. Benutzer kann sich erfolgreich registrieren, anmelden und abmelden.
+2. Navigation zwischen Hauptseiten (Home, Shop, Favoriten) funktioniert.
+3. Social-Media-Anmeldungen (Facebook, Instagram, Twitter, TikTok) sind stabil.
+4. Produkte können angezeigt, ausgewählt und gekauft werden.
+5. Bezahlvorgänge per Karte funktionieren zuverlässig.
+6. Favoritenfunktion speichert Produkte korrekt.
+
+---
+
+## 4. Festlegung der Testkriterien
+
+### 4.1 Abnahmekriterien
+- Alle funktionalen Testfälle (P1–P3) müssen erfolgreich (✅) abgeschlossen sein.
+- Keine kritischen Defekte offen (Severity = Critical oder High).
+- 95 % aller Testfälle bestanden.
+
+### 4.2 Abbruchkriterien
+- Build instabil oder unvollständig.
+- Mehr als 25 % der Testfälle fehlschlagen.
+- Testumgebung nicht verfügbar.
+
+### 4.3 Fortsetzungskriterien
+- Fehleranalyse abgeschlossen und Fixes bereitgestellt.
+- Re-Test erfolgreich durchgeführt.
+- Regressionstest ohne neue Defekte.
+
+---
+
+## 5. Ressourcenplanung
+
+| Rolle | Verantwortlichkeiten | Name/Verfügbarkeit |
+|--------|----------------------|--------------------|
+| Testmanager | Planung, Koordination, Berichterstattung | Alexej Platizin |
+| Tester | Testfallerstellung, Ausführung, Defect-Erfassung | QA-Team |
+| Entwickler | Fehleranalyse, Bugfixing, Build-Delivery | Dev-Team |
+| Systemadministrator | Testumgebung & Datenpflege | IT Ops |
+
+**Tools:**
+- Testmanagement: Jira Xray / TestRail
+- Bug Tracking: Jira
+- Testautomatisierung: Selenium / Cypress
+- Reporting: Allure, Excel, ReportPortal
+
+---
+
+## 6. Planung der Testumgebung
+
+| Komponente | Beschreibung |
+|-------------|--------------|
+| System | Webapplikation (Frontend & Backend) |
+| Umgebung | Testserver / Staging |
+| Datenbank | MySQL Test-DB mit Seed-Daten |
+| Browser | Chrome, Firefox, Safari |
+| Betriebssystem | Windows 11 / macOS Catalina |
+| Netzwerk | Internetzugang mit stabiler Verbindung |
+| Testdaten | Dummy-Benutzer (inkl. Altersangabe ≥18), Testprodukte, Testkarte |
+
+---
+
+## 7. Zeitplan und Aufwandsschätzung
+
+| Phase | Aktivität | Dauer | Verantwortlich |
+|--------|------------|--------|----------------|
+| Analyse | Anforderungsanalyse & Testplan | 1 Tag | Testmanager |
+| Entwurf | Testfälle & Daten vorbereiten | 1 Tag | QA-Team |
+| Ausführung | Manuelle Tests | 2 Tage | QA-Team |
+| Fehleranalyse | Bugfixing & Retest | 1 Tag | Dev-Team |
+| Abschluss | Bericht & Review | 0.5 Tag | Testmanager |
+
+**Gesamtaufwand:** ca. 4,5 Testtage
+
+---
+
+## 8. Testliefergegenstände (Test Deliverables)
+
+| Artefakt | Beschreibung |
+|-----------|--------------|
+| Testplan | Dieses Dokument – strategische Testplanung |
+| Testfälle | Detaillierte Testbeschreibungen (TC01–TC16) |
+| Testdaten | Eingabedaten für Registrierung, Login, Produkte etc. |
+| Testprotokolle | Ergebnisse der Testausführung |
+| Defect-Reports | Dokumentation aller aufgetretenen Fehler |
+| Testabschlussbericht | Zusammenfassung nach Abschluss aller Tests |
+
+---
+
+## 9. Risiken & Gegenmaßnahmen
+
+| Risiko | Auswirkung | Gegenmaßnahme |
+|--------|-------------|---------------|
+| Instabile Testumgebung | Verzögerung der Tests | Backup-System bereitstellen |
+| Fehlende Testdaten | Testabbruch möglich | Automatische Datenvorbereitung |
+| Ressourcenknappheit | Zeitplanverzug | Frühzeitige Planung & Priorisierung |
+| Kommunikationslücken | Missverständnisse im Bugtracking | Regelmäßige QA/Dev-Meetings |
+
+---
+
+## 10. Genehmigung
+
+| Name | Rolle | Datum | Unterschrift |
+|------|--------|--------|---------------|
+| Alexej Platizin | Testmanager | 14.10.2025 | — |
+| QA-Team | Tester | 14.10.2025 | — |
+| Dev-Team Lead
