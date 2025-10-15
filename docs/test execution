@@ -1,0 +1,84 @@
+# STLC – Test Execution: User Registration & Shop Functions
+
+## 1. Ziel
+
+In dieser Phase werden die im Testplan definierten Testfälle **praktisch ausgeführt**, um das Verhalten der Anwendung unter realen Bedingungen zu überprüfen.
+Alle Ergebnisse werden protokolliert und Abweichungen als **Defects** erfasst.
+
+---
+
+## 2. Voraussetzungen
+
+- Testumgebung bereitgestellt
+- Testdaten verfügbar
+- Testplan freigegeben
+- Build-Version: `v1.0.0`
+- Browser: Chrome / Firefox
+
+---
+
+## 3. Testdurchführung
+
+### Übersicht der Testergebnisse
+
+| Nr. | Testfallbeschreibung | Erwartetes Ergebnis | Tatsächliches Ergebnis | Status | Bemerkung |
+|-----|----------------------|----------------------|--------------------------|---------|------------|
+| TC01 | User registriert sich mit gültigen Daten | Registrierung erfolgreich | Erfolgreich registriert | ✅ Passed | Keine Fehler |
+| TC02 | User meldet sich mit gültigen Daten an | Anmeldung erfolgreich | Login funktioniert | ✅ Passed | OK |
+| TC03 | User meldet sich ab | Abmeldung erfolgreich | Logout funktioniert | ✅ Passed | OK |
+| TC04 | User mit Altersangabe ≥18 | Registrierung erlaubt | Erfolgreich registriert | ✅ Passed | Validierung korrekt |
+| TC05 | Navigation: Home-Button | Startseite wird geladen | Startseite öffnet sich | ✅ Passed | Navigation stabil |
+| TC06 | Navigation: Shop-Button | Shop-Seite öffnet sich | Shop-Seite lädt korrekt | ✅ Passed | OK |
+| TC07 | Navigation: Favoriten-Button | Favoritenseite öffnet sich | Seite reagiert nicht | ❌ Failed | UI-Button ohne Funktion |
+| TC08 | Facebook Login | Erfolgreich an/abmelden | Funktioniert korrekt | ✅ Passed | OK |
+| TC09 | Instagram Login | Erfolgreich an/abmelden | Funktioniert korrekt | ✅ Passed | OK |
+| TC10 | Twitter Login | Erfolgreich an/abmelden | Funktioniert korrekt | ✅ Passed | OK |
+| TC11 | TikTok Login | Erfolgreich an/abmelden | Funktioniert korrekt | ✅ Passed | OK |
+| TC12 | Kontakt via Telefon | Verbindung hergestellt | Verbindung möglich | ✅ Passed | OK |
+| TC13 | Produktseiten 1–24 anzeigen | Alle Seiten sichtbar | Produkte werden korrekt geladen | ✅ Passed | OK |
+| TC14 | Produktmenge ≥1 bis Lagerbestand | Auswahl möglich | Funktioniert korrekt | ✅ Passed | OK |
+| TC15 | Bezahlung per Karte | Zahlung erfolgreich | Zahlung fehlgeschlagen | ❌ Failed | Zahlungsmodul fehlerhaft |
+| TC16 | Produkt zu Favoriten hinzufügen | Favoriten werden gespeichert | Funktion reagiert nicht | ❌ Failed | API-Fehler im Favoriten-Endpunkt |
+
+---
+
+## 4. Testergebnisse
+
+| Kategorie | Anzahl |
+|------------|---------|
+| Gesamte Testfälle | 16 |
+| Passed | 13 |
+| Failed | 3 |
+| Blocked | 0 |
+| Erfolgsquote | **81,25 %** |
+
+---
+
+## 5. Beobachtungen & Fehler
+
+| Defect ID | Beschreibung | Priorität | Status |
+|------------|--------------|------------|----------|
+| DEF-001 | Favoriten-Button ohne Reaktion | Hoch | Offen |
+| DEF-002 | Kreditkartenzahlung schlägt fehl | Kritisch | Offen |
+| DEF-003 | Favoriten-Funktion (Backend/API) fehlerhaft | Hoch | Offen |
+
+---
+
+## 6. Fazit
+
+Die Testausführung zeigt, dass die Kernfunktionen des Systems stabil laufen.
+**Drei Defekte** wurden identifiziert, die behoben werden müssen, bevor ein Go-Live erfolgen kann:
+
+1. Favoriten-Button (Frontend/UI)
+2. Kreditkartenzahlung (Backend)
+3. Favoriten-API (Serverfehler)
+
+Nach der Fehlerbehebung werden **Re-Tests** und ein **Regressionstest** durchgeführt.
+
+---
+
+## 7. Empfehlung
+
+- Priorisierte Bugfixes in Sprint aufnehmen
+- Nach jedem Fix: **automatisierte Regressionstests** einführen
+- Dokumentation im Testmanagement-Tool aktualisieren (z. B. Jira Xray/TestRail)
