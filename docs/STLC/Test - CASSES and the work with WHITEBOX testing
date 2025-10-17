@@ -1,0 +1,23 @@
+Machen wir das sauber und praktisch ! Für die Tests gebe ich:
+(1) die Zustände, (2) die Übergänge/Ereignisse,
+(3) eine Zustandsübergangstabelle (inkl. Aktionen/Guards) und
+(4) ein Zustandsübergangsdiagramm (ASCII + Graphviz DOT),
+ damit du es leicht als Bild rendern oder in ein Test-Tool übernehmen kannst.
+1. Zustände
+• Start — Startbildschirm / kein Vorgang aktiv
+• WarteAufPIN — Bildschirm: „Warte auf PIN“ (hier werden PIN-Eingaben akzeptiert)
+• Authentifiziert — PIN korrekt: Zugriff auf Konto möglich
+• KarteEingezogen — Karte wird eingezogen (nach zu vielen Fehlversuchen)
+• Abbruch (optional) — Benutzer bricht Vorgang ab / Timeout (falls relevant)
+Internes Attribut (Zähler): attempts (Anzahl Fehlversuche, initial 0, Max = 3).
+2. Übergänge / Ereignisse (Kurz)
+• InsertCard / StartPressed → Start → WarteAufPIN (setzt attempts = 0)
+• EnterPIN(correct) → WarteAufPIN → Authentifiziert (Action: grant access)
+• EnterPIN(incorrect) → WarteAufPIN → (wenn attempts < 2) Warte AufPIN
+(increment attempts)
+• EnterPIN(incorrect) → WarteAufPIN → KarteEingezogen (wenn attempts == 2,
+d.h. nach 3. Fehlversuch)
+• Timeout / Cancel → WarteAufPIN → Start / Abbruch (optional)
+Hinweis: Wir zählen attempts so, dass nach
+3 falschen Eingaben (attempts 0→1→2→3) die Karte eingezogen wird.
+Bei Guards verwende ich attempts < 2 vs attempts >= 2 so die Logik klar wird.
