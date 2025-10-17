@@ -1,0 +1,40 @@
+Aufgabe 1.
+
+Gültige Äquivalenzklassen (innerhalb des spezifizierten Wertebereichs) sind:**(Hier ausfüllen)**
+
+- **Klasse 1: 0 - 49**
+- **Klasse 2: 50 - 69**
+- **Klasse 3: 70 - 89**
+- **Klasse 4: 90 -100**
+
+Ungültige Äquivalenzklassen sind:**(Hier ausfüllen)**
+
+- **Klasse 5: < 0**
+- **Klasse 6: > 100**
+
+Aufgabe 2.
+
+Für jede Äquivalenzklasse betrachten wir daher:
+
+- die untere Grenze
+- die obere Grenze
+- und ggf. Werte direkt daneben (±
+1
+- ±1)
+Aufgabe 3
+Testfall-ID	Bezeichnung	Eingabewert	Erwartete Ausgabe
+TC1	deutlich unter der niederen Grenze	ㅤ- 1	ㅤ< 0
+TC2	ㅤknapp unter der niederen Grenze	ㅤ0	ㅤ49
+TC3	genaue Anspruchsgrenze	ㅤ49	ㅤ59
+TC4	ㅤknapp über der Anspruchsgrenze	ㅤ59	ㅤ79
+TC5	ㅤGrenze mit Lob	ㅤ79	ㅤ100
+TC6	ㅤ knapp - deutlich über der Anspruchsgrenze	ㅤ100	ㅤ> 100
+TC7	ㅤ	ㅤ	ㅤ
+TC8	ㅤ	ㅤ	ㅤ
+TC9	ㅤ	ㅤ	ㅤ
+TC10	ㅤ	ㅤ	ㅤ
+TC11	ㅤ	ㅤ	ㅤ
+TC12	ㅤ	ㅤ	ㅤ
+TC13	ㅤ	ㅤ	ㅤ
+TC14	ㅤ	ㅤ	ㅤ
+TC15	ㅤ	ㅤ	ㅤ
