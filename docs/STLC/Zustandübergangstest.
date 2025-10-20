@@ -1,0 +1,44 @@
+# Zustandsübergangstest – PIN-Authentifizierung (ATM / Login-System)
+
+## 1. Zustände
+
+| Zustand | Beschreibung |
+|----------|---------------|
+| **Start** | Startbildschirm – kein Vorgang aktiv |
+| **WarteAufPIN** | System erwartet PIN-Eingabe |
+| **Authentifiziert** | Benutzer wurde erfolgreich authentifiziert |
+| **KarteEingezogen** | Karte wurde nach 3 Fehlversuchen eingezogen |
+| **Abbruch (optional)** | Vorgang abgebrochen oder Timeout aufgetreten |
+
+**Internes Attribut:**
+`attempts` = Zähler für Fehlversuche (initial 0, max. 3)
+
+---
+
+## 2. Übergänge / Ereignisse
+
+| Ereignis | Aktueller Zustand | Guard / Bedingung | Nächster Zustand | Aktion |
+|-----------|------------------|-------------------|------------------|--------|
+| `InsertCard` oder `StartPressed` | Start | — | WarteAufPIN | `attempts = 0` |
+| `EnterPIN(correct)` | WarteAufPIN | — | Authentifiziert | `grant access` |
+| `EnterPIN(incorrect)` | WarteAufPIN | `attempts < 2` | WarteAufPIN | `attempts++` |
+| `EnterPIN(incorrect)` | WarteAufPIN | `attempts >= 2` | KarteEingezogen | `retain card` |
+| `Timeout` oder `Cancel` | WarteAufPIN | — | Abbruch oder Start | `reset session` |
+
+---
+
+## 3. Zustandsübergangstabelle (mit Guards & Aktionen)
+
+| Von | Ereignis | Bedingung (Guard) | Nach | Aktion |
+|------|-----------|-------------------|--------|---------|
+| Start | InsertCard | — | WarteAufPIN | attempts = 0 |
+| WarteAufPIN | EnterPIN(correct) | — | Authentifiziert | grant access |
+| WarteAufPIN | EnterPIN(incorrect) | attempts < 2 | WarteAufPIN | attempts++ |
+| WarteAufPIN | EnterPIN(incorrect) | attempts >= 2 | KarteEingezogen | retain card |
+| WarteAufPIN | Timeout | — | Start | reset |
+| WarteAufPIN | Cancel | — | Abbruch | reset |
+
+---
+
+## 4. ASCII-Zustandsdiagramm
+
