@@ -1,0 +1,19 @@
+ Positive Testfälle:
+1. InsertCard → EnterPIN(correct) → erwarteter Zustand: Authentifiziert (
+Zugriff gewährt).
+2. InsertCard → EnterPIN(correct) sofort beim 1. Versuch.
+• Negative / Grenzfälle:
+1.
+1. Fehlversuch: InsertCard → bad PIN → attempts=1 → WarteAufPIN
+(Karte nicht eingezogen).
+2.
+1. Fehlversuch: zwei mal falsche PIN → attempts=2 → WarteAufPIN.
+3.
+1. Fehlversuch: drei mal falsche PIN → Karte eingezogen → KarteEingezogen (Endzustand).
+4. Cancel oder Timeout vor Erreichen 3 Fehler → Karte zurück (Start).
+• Explorative Tests:
+◦ Bei EnterPIN(incorrect) prüfen, ob die Anzeige die korrekte verbleibende Anzahl
+Versuche zeigt (z. B. "2 Versuche übrig").
+◦ Verhalten, wenn PIN-Eingabe nach Timeout erfolgt (Timeout-Event explizit simulieren).
+◦ Verhalten bei Input-Fehlern / nicht numerischer PIN (Fehlermeldungen, zählt das als
+Versuch? — hier festlegen).
