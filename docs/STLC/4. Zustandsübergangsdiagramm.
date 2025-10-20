@@ -1,0 +1,43 @@
+4.1 ASCII-Darstellung
+
+[Start]
+   |
+ InsertCard / StartPressed
+   | (attempts = 0)
+   v
+[WarteAufPIN] <---+
+   |              |
+   |-- EnterPIN(correct) --> [Authentifiziert] -- EjectCard --> [Start]
+   |
+   |-- EnterPIN(incorrect) & attempts < 2
+   |        action: attempts +=1 ; show "falsche PIN, X Versuche übrig"
+   |        loop back to [WarteAufPIN]
+   |
+   |-- EnterPIN(incorrect) & attempts >= 2
+            action: attempts +=1 ; Karte einziehen
+            v
+         [KarteEingezogen]  (Endzustand)
+   |
+   |-- Cancel/Timeout --> [Start] (oder [Abbruch])
+
+4.2 Graphviz (DOT) — falls du ein Bild rendern willst
+Du kannst den folgenden DOT-Text z.B. mit dot -Tpng -o atm.png file.dot rendern.
+
+digraph ATM {
+  rankdir=TB;
+  node [shape=box];
+
+  Start -> WarteAufPIN [label="InsertCard / StartPressed\n(action: attempts=0)"];
+
+  WarteAufPIN -> Authentifiziert [label="EnterPIN(correct)\n(action: grant access)"];
+  Authentifiziert -> Start [label="EndSession / EjectCard\n(action: attempts=0)"];
+
+  WarteAufPIN -> WarteAufPIN [label="EnterPIN(incorrect) [attempts < 2]\n
+  (action: attempts+=1)\nshow 'falsche PIN, X Versuche übrig'"];
+   WarteAufPIN -> KarteEingezogen [label="EnterPIN(incorrect) [attempts >= 2]
+   \n(action: attempts+=1)\ncard retained"];
+
+  WarteAufPIN -> Start [label="Cancel / Timeout\n(action: attempts=0)"];
+
+  KarteEingezogen [shape=doublecircle, style=filled, fillcolor=lightgrey];
+}
