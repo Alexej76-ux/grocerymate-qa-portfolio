@@ -1,0 +1,14 @@
+ZustandEreignis / GuardAktion(en)Nächster ZustandStartInsertCard /
+StartPressedattempts = 0 ; Zeige „Warte auf PIN“Warte AufPINWarte
+AufPINEnterPIN(correct)Authentifizierung OK;
+Session startenAuthentifiziertWarteAufPINEnterPIN(incorrect)
+ AND attempts < 2attempts += 1 ;
+ Zeige Fehlermeldung + verbleibende VersucheWarteAufPINWarteAufPINEnterPIN(incorrect)
+ AND attempts >= 2attempts += 1 ; Ziehe Karte ein ;
+ Warnung anzeigenKarteEingezogenWarteAufPINCancel / TimeoutOption: attempts = 0 ;
+  Karte zurückgebenStart (oder Abbruch)AuthentifiziertEnd of Session /
+  EjectCardSession beenden; Karte rausStartKarteEingezogen—Karte einbehalten;
+  Admin/BankprozedurKarteEingezogen (Endzustand)
+(Erläuterung: attempts initial 0. Nach 1. falscher Eingabe attempts=1;
+ nach 2. falscher Eingabe attempts=2; bei der 3. falschen Eingabe (attempts>=2)
+  wird Karte eingezogen.)
