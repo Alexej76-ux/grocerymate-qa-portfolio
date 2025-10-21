@@ -1,0 +1,17 @@
+ASCII-Darstellung:
+
+[Start]
+  ↓
+[S1]
+  ↓
+[C1] --true--> [S2]
+  |            ↓
+  └--false-----┘
+        ↓
+[C2] --true--> [S3] → [S6 return True]
+  |
+  └--false--> [C3]
+                 |--true--> [S4] → [S5 return False]
+                 |--false--> [S6 return True]
+
+[S7] (toter Code, nie erreicht)
