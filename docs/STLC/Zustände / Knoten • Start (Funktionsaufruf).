@@ -1,0 +1,13 @@
+• S1: print("Additional Statement 1")
+• C1: Bedingung price > 50 or isPrimeShoppingMember
+    ◦ ja → S2: print("Additional Statement 2")
+    ◦ nein → überspringt
+• C2: Bedingung price > 25 and numberOfItems < 3
+    ◦ ja → S3: print("Additional Statement 3") → weiter zu return True
+    ◦ nein → weiter zu C3
+• C3: Bedingung price > 10 and numberOfItems == 1
+    ◦ ja → S4: print("Additional Statement 4(discount)") → Ende (False)
+    ◦ nein → weiter zu return True
+• Ende(True)
+• Ende(False)
+• S5 (Additional Statement 5) → unerreichbar (toter Code)
