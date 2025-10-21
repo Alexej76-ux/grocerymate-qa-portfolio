@@ -1,0 +1,14 @@
+Zusatzaufgabe: Zustandsdiagram →    [Ledig] --Heirat--> [Verheiratet]
+^                     |
+|                     v
+|                Partner stirbt
+|                     |
+|                 [Verwitwet]
+|                     |
+|<---Heirat-----------|
+|
+v
+[Geschieden] <--Scheidung-- [Getrennt lebend] --Versöhnung--> [Verheiratet]
+^                                            |
+|                                            |
+|-------------------Heirat-------------------|
