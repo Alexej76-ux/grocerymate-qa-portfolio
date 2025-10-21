@@ -1,0 +1,57 @@
+STLC – Test Execution: User Registration & Shop Functions
+1. Testobjekte
+Modul 1: Benutzerregistrierung und -anmeldung
+Modul 2: Navigation (Home, Shop)
+Modul 3: Favoritenfunktion
+Modul 4: Produktanzeige und Bestellprozess
+2. Ziel der Testausführung
+Die Validierung der Hauptfunktionen im Webshop, um sicherzustellen, dass:
+Neue Benutzer sich erfolgreich registrieren können.
+Bestehende Benutzer sich anmelden und abmelden können.
+Navigationsfunktionen korrekt reagieren.
+Produktlisten vollständig angezeigt werden.
+Bekannte Bugs (Favoriten, Kartenzahlung) korrekt erkannt werden.
+3. Testdaten
+Kategorie	Wert
+Benutzername	test_user
+E-Mail	user@test.com
+Passwort	12345678
+Zahlungsart	Kreditkarte (Dummy)
+Produkt	Standardprodukt aus Seite 1–24
+4. Testumgebung
+Komponente	Beschreibung
+URL	https://staging.shop-demo.local
+Browser	Chrome (Stable), Firefox (ESR)
+Datenbank	Testdatenbank (Seed: Dummy Accounts)
+Automatisierung	Selenium WebDriver + Pytest
+Reporting	Allure HTML-Reports + Screenshots
+5. Testfälle & Ergebnisse
+Testfall-ID	Testbeschreibung	Erwartetes Ergebnis	Tatsächliches Ergebnis	Status
+TC-01	Benutzerregistrierung mit gültigen Daten	Erfolgreiche Registrierung und Weiterleitung zur Startseite	Registrierung erfolgreich, Begrüßung angezeigt	✅
+TC-02	Anmeldung mit korrekten Zugangsdaten	Erfolgreicher Login, Logout-Button sichtbar	Login erfolgreich, Logout sichtbar	✅
+TC-03	Logout nach erfolgreicher Anmeldung	Benutzer wird zur Login-Seite zurückgeleitet	Erfolgreich ausgeloggt	✅
+TC-04	Navigation: Home-Button	„Startseite“ im Titel sichtbar	Seite korrekt geladen	✅
+TC-05	Navigation: Shop-Button	„Produkte“ im Titel sichtbar	Seite korrekt geladen	✅
+TC-06	Produktanzeige auf Seiten 1–24	Mind. 1 Produkt pro Seite sichtbar	Alle Seiten mit ≥1 Produkt	✅
+TC-07	Favoritenfunktion	Fehlermeldung erscheint (bekannter Bug)	Fehlermeldung „Fehler“ angezeigt	⚠️
+TC-08	Kartenzahlung	Zahlung bricht korrekt mit Fehler ab	„Zahlung fehlgeschlagen“ angezeigt	⚠️
+6. Testergebnisse (Allgemein)
+Anzahl Testfälle: 8
+Bestanden: 6
+Fehlgeschlagen / bekannte Bugs: 2
+Gesamterfolgsquote: 75%
+7. Fehlerprotokoll
+Bug-ID	Modul	Beschreibung	Status
+BUG-001	Favoriten	Favoritenbutton reagiert nicht bzw. zeigt Fehlerseite	Offen
+BUG-002	Zahlung	Kartenzahlung führt zu „Server Error 500“	Offen
+8. Screenshots & Logs
+Allure Report: report_allure/index.html
+Fehler-Screenshots: screenshots/bug_favorites.png, screenshots/bug_payment.png
+Logdateien: pytest_results.log
+9. Fazit & Empfehlung
+Stabilität: Hoch – alle Kernfunktionen (Registrierung, Login, Navigation, Produktanzeige) funktionieren zuverlässig.
+Hauptprobleme: Fehlerhafte Favoritenfunktion und Kartenzahlung.
+Empfehlung:
+Bugfixing der Favoriten- und Zahlungslogik.
+Regressionstest nach Implementierung.
+Integration von zusätzlicher Fehlerüberwachung (Logging + Alerts).
