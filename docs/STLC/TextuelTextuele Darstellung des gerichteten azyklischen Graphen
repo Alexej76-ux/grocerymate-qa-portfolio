@@ -1,0 +1,17 @@
+[Start]
+   ↓
+[S1: Print 1]
+   ↓
+[C1: price>50 or isPrimeMember?]
+   ├── Ja → [S2: Print 2] → ↓
+   └── Nein ──────────────→ ↓
+              ↓
+[C2: price>25 and items<3?]
+   ├── Ja → [S3: Print 3] → [Return True]
+   └── Nein → ↓
+               ↓
+[C3: price>10 and items==1?]
+   ├── Ja → [S4: Print 4] → [Return False]
+   └── Nein → [Return True]
+
+[S5] (unerreichbar)
