@@ -12,3 +12,4 @@ Session startenAuthentifiziertWarteAufPINEnterPIN(incorrect)
 (Erläuterung: attempts initial 0. Nach 1. falscher Eingabe attempts=1;
  nach 2. falscher Eingabe attempts=2; bei der 3. falschen Eingabe (attempts>=2)
   wird Karte eingezogen.)
+
