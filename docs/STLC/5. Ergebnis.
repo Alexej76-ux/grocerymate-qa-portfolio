@@ -1,0 +1,7 @@
+5. Ergebnis
+• Mit S7 im Code:
+    ◦ Statement Coverage = 85.7 %
+    ◦ Branch Coverage = 83.3 %
+• Ohne S7 im Code:
+    ◦ Statement Coverage = 100 %
+    ◦ Branch Coverage = 83.3 %
