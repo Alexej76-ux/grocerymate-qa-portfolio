@@ -1,0 +1,8 @@
+4. Wenn print("Additional Statement 5") entfernt wird
+Das Statement S7 (unerreichbarer Code) verschwindet.
+• Neue Statements: 6 (S1–S6)
+    ◦ Alle 6 durch Tests abgedeckt
+    ◦ → 100 % Statement Coverage
+• Branches: unverändert
+    ◦ C3-false weiterhin nicht getestet
+    ◦ → 83.3 % Branch Coverage
