@@ -1,6 +1,0 @@
-Zustandübergangstabelle. Aktueller ZustandEreignisNeuer-> Zustand -->Ledigkeine
-ÄnderungLedig -> LedigHeirat ->Verheiratet - Verheiratetkeine-Änderung ->Verheiratet-
-Verheiratet-Partner stirbt ->Verwitwet - Verheiratet -> Trennung - Getrennt lebend ->Getrennt
-lebend-keine ÄnderungGetrennt lebend-Getrennt lebend-Scheidung Geschieden->Getrennt lebend
-Versöhnung -> Verheiratet-Geschieden-keine Änderung-Geschieden-Geschieden ->Heirat - Verheiratet
-Verwitwet - keineÄnderung-Verwitwet - Verwitwet-Heirat -> Verheiratet.

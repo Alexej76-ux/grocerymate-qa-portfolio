@@ -1,0 +1,134 @@
+# Automatisierungstest – User Journey (Webshop)
+
+## 1. Analyse des Produkts
+Das getestete System ist eine Webanwendung mit Benutzerregistrierung, Login/Logout, Navigation (Home, Shop, Favoriten) und Produktkaufoptionen.
+Zusätzlich unterstützt das System Social-Media-Anmeldung (Facebook, Instagram, Twitter, TikTok) sowie telefonische Anmeldung.
+Produkte können bis Seite 24 angezeigt und ab einer Menge ≥ 1 bestellt werden. Favoritenfunktion und Kartenzahlung sind derzeit fehlerhaft (bekannte Bugs).
+
+---
+
+## 2. Teststrategie
+- **Testtyp:** Funktionaler End-to-End-Test (UI-basiert)
+- **Testmethode:** Automatisierung mit Selenium WebDriver (Python)
+- **Abdeckung:** Positiv- und Negativtests (z. B. Favoriten, Kartenzahlung)
+- **Trigger:** CI/CD Pipeline bei jedem Commit
+- **Reporting:** HTML-Testbericht + Screenshots bei Fehlern
+- **Testumgebung:** Staging-Webshop mit realistischem Dummy-Datensatz
+
+---
+
+## 3. Testziele
+1. Sicherstellen, dass Registrierung, Anmeldung und Abmeldung korrekt funktionieren.
+2. Verifizieren, dass Navigationselemente (Home, Shop) reagieren.
+3. Prüfen, dass Favoritenfunktion fehlschlägt (bekannter Fehler).
+4. Validieren, dass Produkte über alle Seiten korrekt angezeigt werden.
+5. Sicherstellen, dass Kartenzahlung blockiert ist (negativer Test).
+6. Testen der Social-Media- und Telefon-Authentifizierung.
+
+---
+
+## 4. Testkriterien
+
+| Kategorie | Beschreibung |
+|------------|--------------|
+| **Abnahmekriterien** | Alle erfolgreichen Tests (Erfolg) laufen ohne Fehler; bekannte Bugs werden korrekt erkannt (ohne Erfolg). |
+| **Abbruchkriterien** | Wenn Login oder Registrierung fehlschlagen → Testlauf abbrechen. |
+| **Fortsetzungskriterien** | Nicht-kritische Tests (Favoriten, Zahlung) dürfen fehlschlagen, wenn andere Module erfolgreich sind. |
+
+---
+
+## 5. Ressourcenplanung
+- **Tester:** 1 QA-Ingenieur (Python + Selenium)
+- **Tools:** Selenium WebDriver, Pytest, Allure Report
+- **Testdaten:** Dummy-Accounts, Testprodukte, Mock-Kreditkarten
+- **Hardware:** CI-Server + Browser Grid (Chrome, Firefox)
+
+---
+
+## 6. Testumgebung
+| Komponente | Beschreibung |
+|-------------|--------------|
+| URL | https://staging.shop-demo.local |
+| Browser | Chrome (Stable), Firefox (ESR) |
+| Datenbank | Test-Datenbank mit Seed-Daten |
+| Auth-Systeme | OAuth (Facebook, Instagram, Twitter, TikTok), Telefon-OTP |
+| Logging | Selenium + Allure-Reports |
+
+---
+
+## 7. Zeitplan & Aufwandsschätzung
+| Aktivität | Aufwand |
+|------------|----------|
+| Testskripterstellung | 2 Tage |
+| Debugging & Stabilisierung | 1 Tag |
+| Testausführung (voller Durchlauf) | 30 Minuten |
+| Reporting & Analyse | 0.5 Tag |
+
+---
+
+## 8. Testliefergegenstände (Deliverables)
+- Automatisierte Selenium-Testskripte
+- HTML-Testbericht (Allure)
+- Screenshots bei Fehlern
+- Logdateien
+- Abschlussbericht (inkl. Erfolgsquote)
+
+---
+
+## 9. Automatisierter Selenium-Test (Python)
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import pytest, time
+
+@pytest.fixture(scope="module")
+def driver():
+    driver = webdriver.Chrome()
+    driver.get("https://staging.shop-demo.local")
+    yield driver
+    driver.quit()
+
+def test_user_registration(driver):
+    driver.find_element(By.ID, "register").click()
+    driver.find_element(By.ID, "username").send_keys("test_user")
+    driver.find_element(By.ID, "email").send_keys("user@test.com")
+    driver.find_element(By.ID, "password").send_keys("12345678")
+    driver.find_element(By.ID, "submit").click()
+    assert "Willkommen" in driver.page_source
+
+def test_login_logout(driver):
+    driver.find_element(By.ID, "login").click()
+    driver.find_element(By.ID, "username").send_keys("test_user")
+    driver.find_element(By.ID, "password").send_keys("12345678")
+    driver.find_element(By.ID, "submit").click()
+    assert "Abmelden" in driver.page_source
+    driver.find_element(By.ID, "logout").click()
+    assert "Anmelden" in driver.page_source
+
+def test_navigation_buttons(driver):
+    driver.find_element(By.ID, "home-btn").click()
+    assert "Startseite" in driver.title
+    driver.find_element(By.ID, "shop-btn").click()
+    assert "Produkte" in driver.title
+
+def test_favoriten(driver):
+    driver.find_element(By.ID, "favorite-btn").click()
+    assert "Fehler" in driver.page_source  # erwarteter Bug
+
+def test_social_logins(driver):
+    for platform in ["facebook", "instagram", "twitter", "tiktok"]:
+        driver.find_element(By.ID, f"login-{platform}").click()
+        time.sleep(1)
+        assert "Erfolgreich angemeldet" in driver.page_source
+
+def test_product_listing(driver):
+    for page in range(1, 25):
+        driver.get(f"https://staging.shop-demo.local/shop?page={page}")
+        products = driver.find_elements(By.CLASS_NAME, "product-item")
+        assert len(products) >= 1
+
+def test_payment_failure(driver):
+    driver.find_element(By.ID, "buy-now").click()
+    driver.find_element(By.ID, "payment-card").click()
+    assert "Zahlung fehlgeschlagen" in driver.page_source
