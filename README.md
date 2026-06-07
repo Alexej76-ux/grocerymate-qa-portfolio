@@ -24,7 +24,7 @@ Ich arbeite vorwiegend mit **Python**, erstelle automatisierte Tests и со в�
 
 ## 📂 Featured Portfolio Project
 Mein wichtigstes QA-Projekt findest du hier:
-👉 **[alexej-qa-grossery-portfolio](https://github.com/Alexej76-ux/grocerymate-qa-portfolio)** – Enthält vollständige Testdokumentationen, Testfälle und Automatisierungsansätze.
+👉 **[grocery-portfolio](https://github.com/Alexej76-ux/grocerymate-qa-portfolio)** – Enthält vollständige Testdokumentationen, Testfälle und Automatisierungsansätze.
 ## Technologies
 - Python
 - Git / GitHub
