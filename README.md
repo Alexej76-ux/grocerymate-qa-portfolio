@@ -15,12 +15,18 @@ Ich arbeite vorwiegend mit **Python**, erstelle automatisierte Tests и со в�
 
 ---
 
-## 🧰 Tech Stack & Tools
+🧰 Tech Stack & Tools
+Python Playwright pytest Selenium Robot Framework Docker GitHub Actions GitHub HTML5 CSS3 JavaScript SQLite
 
-* **Languages:** Python, HTML, CSS
-* **Testing & Tools:** Git/GitHub, Postman, Bug Reporting & Test Documentation
+🐍 Python — test automation, scripting, API testing
+🎭 Playwright & Selenium — UI test automation with Page Object Model
+🤖 Robot Framework — keyword-driven test automation (currently learning)
+🔎 Locators — CSS selectors, XPath, semantic locators
+🐳 Docker — containerization
+⚙️ GitHub Actions — CI/CD pipelines with automated testing
+✅ Manual & exploratory testing
+🌀 Agile methods — Scrum, Kanban
 
----
 
 ## 📂 Featured Portfolio Project
 Mein wichtigstes QA-Projekt findest du hier:
