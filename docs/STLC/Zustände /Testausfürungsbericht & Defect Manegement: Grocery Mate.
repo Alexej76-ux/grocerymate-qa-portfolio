@@ -1,0 +1,7 @@
+CONTACT_BTN = (By.XPATH, "a//)
+ID: // [@id=`login-buton']
+
+Name://*[@cname='username']
+Klass://[*class='submit-btn']
+Typ://input[@type='submit']
+Platzhalter://input[

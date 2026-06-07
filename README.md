@@ -1,21 +1,30 @@
-# grocerymate-qa-portfolio
-QA portfolio for the GroceryMate project – contains test documentation, 
-test automation, and sample artifacts from the Software Testing Life Cycle (STLC).
-# Hello, I'm Alexej 👋
-I am a [QA engineering student / aspiring developer / ISTQB / DevOps / 
-data science enthusiast] with an interest in [e.g., web development, 
-AI, automation, etc.].
-## About me
-I'm currently learning [e.g., Python QA - Engineering, DevOps, STLC,
-and Software Engineering] and working on projects that [e.g., solve 
-real-world problems through automation or data analysis, testing].
-My strengths lie in [e.g., structured problem-solving, teamwork, 
-test automation].
+# Happy to have you as a guest 👋
 
-## Goals
-I want to demonstrate with my portfolio that I can write clean, 
-tested code and document software projects.
+### 🎯 Junior QA Engineer | Test Automation • Manual Testing • STLC
+Passionate about quality, precision, and reliable software — with a love for structured test documentation and automation.
 
+---
+
+## 🧠 About Me
+
+Ich bin ein engagierter **QA Engineer** mit praktischer Erfahrung in der **manuellen Testdurchführung**, **Testautomatisierung** und dem **Software Testing Life Cycle (STLC)**, ausgebildet durch Masterschool. Derzeit vertiefe ich meine Fähigkeiten in der Praxis während meines Praktikums bei **IDCanopy** und bereite mich intensiv auf die **ISTQB Certified Tester (CTFL)** Zertifizierung vor.
+
+Mein Fokus liegt darauf, Softwareprodukte stabiler, fehlerfrei und benutzerfreundlich zu machen. Ich bringe ein ausgeprägtes Auge fürs Detail mit und liebe es, strukturierte Testprozesse in jedes Projekt einzubringen.
+
+Ich arbeite vorwiegend mit **Python**, erstelle automatisierte Tests и со временем расширяю свой стек технологий. Ich blühe in Teams auf, die Wert auf Klarheit, Neugier und nutzerorientiertes Denken legen.
+
+---
+
+## 🧰 Tech Stack & Tools
+
+* **Languages:** Python, HTML, CSS
+* **Testing & Tools:** Git/GitHub, Postman, Bug Reporting & Test Documentation
+
+---
+
+## 📂 Featured Portfolio Project
+Mein wichtigstes QA-Projekt findest du hier:
+👉 **[alexej-qa-grossery-portfolio](https://github.com/Alexej76-ux/grocerymate-qa-portfolio)** – Enthält vollständige Testdokumentationen, Testfälle und Automatisierungsansätze.
 ## Technologies
 - Python
 - Git / GitHub
